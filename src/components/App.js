@@ -1,26 +1,26 @@
 import React from "react";
-import logo from "../assets/logo.svg";
+import Counter from "./Counter";
 import "../styles/App.css";
 
-function App() {
+const counters = [
+  { id: "123", initialCount: 0 },
+  { id: "345", initialCount: -10 },
+  { id: "234", initialCount: 9 },
+  { id: "562", initialCount: 2 }
+];
+
+// Index can be used only if array does not push or pop
+const counterItems = counters.map(counter => {
+  return <Counter key={counter.id} count={counter.initialCount} />;
+});
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="counter">
+      <h1>React Simple Counter</h1>
+      {counterItems}
     </div>
   );
-}
+};
 
 export default App;
